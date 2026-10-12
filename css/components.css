@@ -1,0 +1,211 @@
+/* Shared toy surface */
+.toy-surface {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft), var(--highlight-inner), var(--edge-inner);
+  transition: transform var(--duration-fast) var(--ease-standard),
+    box-shadow var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard);
+}
+
+/* Card */
+.card {
+  padding: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.card:hover,
+.card:focus-within {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift), var(--highlight-inner), var(--edge-inner);
+}
+
+/* Button & interactive surfaces */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--touch-target-min);
+  min-width: var(--touch-target-min);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  color: var(--color-text);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lift), var(--highlight-inner), var(--edge-inner);
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: var(--shadow-soft), var(--highlight-inner), var(--edge-inner);
+}
+
+.btn:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--color-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Header & Navigation */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-soft);
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: calc(var(--touch-target-min) + var(--space-3));
+  position: relative;
+}
+
+.site-brand {
+  font-size: var(--font-size-body);
+  font-weight: 700;
+  color: var(--color-text);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-2);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.nav-toggle {
+  display: inline-flex;
+}
+
+.site-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: var(--space-4);
+  display: none;
+}
+
+.site-nav.is-open {
+  display: block;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  min-height: var(--touch-target-min);
+  padding: 0 var(--space-3);
+  text-decoration: none;
+  color: var(--color-text-muted);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  transition: color var(--duration-fast) var(--ease-standard),
+    background-color var(--duration-fast) var(--ease-standard);
+}
+
+.nav-link:hover {
+  color: var(--color-text);
+  background-color: var(--color-surface-raised);
+}
+
+.nav-link.active {
+  color: var(--color-accent);
+  font-weight: 700;
+  background-color: var(--color-surface-raised);
+}
+
+@media (min-width: 768px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .site-nav {
+    position: static;
+    display: block;
+    background-color: transparent;
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .nav-list {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-2);
+  }
+}
+
+/* Grids and reflow layouts */
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+  margin-top: var(--space-4);
+}
+
+@media (min-width: 768px) {
+  .content-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Sub-area spacing */
+.area-block {
+  margin-top: var(--space-5);
+}
+
+.area-block:first-of-type {
+  margin-top: 0;
+}
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+  text-align: center;
+  font-size: var(--font-size-small);
+  color: var(--color-text-muted);
+  background-color: var(--color-surface);
+}
